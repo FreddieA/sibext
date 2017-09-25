@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D4F683E21F79272900CF4020 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F683E11F79272900CF4020 /* AppDelegate.m */; };
+		D4F683E51F79272900CF4020 /* CageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F683E41F79272900CF4020 /* CageViewController.m */; };
+		D4F683EA1F79272900CF4020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F683E91F79272900CF4020 /* Assets.xcassets */; };
+		D4F683F01F79272900CF4020 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F683EF1F79272900CF4020 /* main.m */; };
+		D4F683FB1F7927A900CF4020 /* WorldEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F683FA1F7927A900CF4020 /* WorldEngine.m */; };
+		D4F683FE1F7929A000CF4020 /* CageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4F683FD1F7929A000CF4020 /* CageViewController.xib */; };
+		D4F684021F792F0F00CF4020 /* Space.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F684011F792F0F00CF4020 /* Space.m */; };
+		D4F684071F792F7E00CF4020 /* Creature.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F684061F792F7E00CF4020 /* Creature.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D4F683DD1F79272900CF4020 /* SeaWorldThunderDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaWorldThunderDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F683E01F79272900CF4020 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D4F683E11F79272900CF4020 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D4F683E31F79272900CF4020 /* CageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CageViewController.h; sourceTree = "<group>"; };
+		D4F683E41F79272900CF4020 /* CageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CageViewController.m; sourceTree = "<group>"; };
+		D4F683E91F79272900CF4020 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D4F683EE1F79272900CF4020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4F683EF1F79272900CF4020 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D4F683F91F7927A900CF4020 /* WorldEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorldEngine.h; sourceTree = "<group>"; };
+		D4F683FA1F7927A900CF4020 /* WorldEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorldEngine.m; sourceTree = "<group>"; };
+		D4F683FD1F7929A000CF4020 /* CageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CageViewController.xib; sourceTree = "<group>"; };
+		D4F684001F792F0F00CF4020 /* Space.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Space.h; sourceTree = "<group>"; };
+		D4F684011F792F0F00CF4020 /* Space.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Space.m; sourceTree = "<group>"; };
+		D4F684051F792F7E00CF4020 /* Creature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Creature.h; sourceTree = "<group>"; };
+		D4F684061F792F7E00CF4020 /* Creature.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Creature.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D4F683DA1F79272900CF4020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D4F683D41F79272900CF4020 = {
+			isa = PBXGroup;
+			children = (
+				D4F683DF1F79272900CF4020 /* SeaWorldThunderDome */,
+				D4F683DE1F79272900CF4020 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D4F683DE1F79272900CF4020 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4F683DD1F79272900CF4020 /* SeaWorldThunderDome.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D4F683DF1F79272900CF4020 /* SeaWorldThunderDome */ = {
+			isa = PBXGroup;
+			children = (
+				D4F683FF1F792BC800CF4020 /* Objects */,
+				D4F683F71F79276D00CF4020 /* Utils */,
+				D4F683F61F79276400CF4020 /* ViewController */,
+				D4F683E01F79272900CF4020 /* AppDelegate.h */,
+				D4F683E11F79272900CF4020 /* AppDelegate.m */,
+				D4F683E91F79272900CF4020 /* Assets.xcassets */,
+				D4F683EE1F79272900CF4020 /* Info.plist */,
+				D4F683EF1F79272900CF4020 /* main.m */,
+			);
+			path = SeaWorldThunderDome;
+			sourceTree = "<group>";
+		};
+		D4F683F61F79276400CF4020 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D4F683FC1F7927AF00CF4020 /* CageViewController */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D4F683F71F79276D00CF4020 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D4F683F81F79277500CF4020 /* WorldEngine */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D4F683F81F79277500CF4020 /* WorldEngine */ = {
+			isa = PBXGroup;
+			children = (
+				D4F683F91F7927A900CF4020 /* WorldEngine.h */,
+				D4F683FA1F7927A900CF4020 /* WorldEngine.m */,
+			);
+			path = WorldEngine;
+			sourceTree = "<group>";
+		};
+		D4F683FC1F7927AF00CF4020 /* CageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D4F683E31F79272900CF4020 /* CageViewController.h */,
+				D4F683E41F79272900CF4020 /* CageViewController.m */,
+				D4F683FD1F7929A000CF4020 /* CageViewController.xib */,
+			);
+			path = CageViewController;
+			sourceTree = "<group>";
+		};
+		D4F683FF1F792BC800CF4020 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				D4F684041F792F6700CF4020 /* Creature */,
+				D4F684031F792F3200CF4020 /* Space */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		D4F684031F792F3200CF4020 /* Space */ = {
+			isa = PBXGroup;
+			children = (
+				D4F684001F792F0F00CF4020 /* Space.h */,
+				D4F684011F792F0F00CF4020 /* Space.m */,
+			);
+			path = Space;
+			sourceTree = "<group>";
+		};
+		D4F684041F792F6700CF4020 /* Creature */ = {
+			isa = PBXGroup;
+			children = (
+				D4F684051F792F7E00CF4020 /* Creature.h */,
+				D4F684061F792F7E00CF4020 /* Creature.m */,
+			);
+			path = Creature;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D4F683DC1F79272900CF4020 /* SeaWorldThunderDome */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4F683F31F79272900CF4020 /* Build configuration list for PBXNativeTarget "SeaWorldThunderDome" */;
+			buildPhases = (
+				D4F683D91F79272900CF4020 /* Sources */,
+				D4F683DA1F79272900CF4020 /* Frameworks */,
+				D4F683DB1F79272900CF4020 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SeaWorldThunderDome;
+			productName = SeaWorldThunderDome;
+			productReference = D4F683DD1F79272900CF4020 /* SeaWorldThunderDome.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D4F683D51F79272900CF4020 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "freddie-ink";
+				TargetAttributes = {
+					D4F683DC1F79272900CF4020 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = D4F683D81F79272900CF4020 /* Build configuration list for PBXProject "SeaWorldThunderDome" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D4F683D41F79272900CF4020;
+			productRefGroup = D4F683DE1F79272900CF4020 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4F683DC1F79272900CF4020 /* SeaWorldThunderDome */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D4F683DB1F79272900CF4020 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4F683FE1F7929A000CF4020 /* CageViewController.xib in Resources */,
+				D4F683EA1F79272900CF4020 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D4F683D91F79272900CF4020 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4F684021F792F0F00CF4020 /* Space.m in Sources */,
+				D4F683E51F79272900CF4020 /* CageViewController.m in Sources */,
+				D4F684071F792F7E00CF4020 /* Creature.m in Sources */,
+				D4F683F01F79272900CF4020 /* main.m in Sources */,
+				D4F683FB1F7927A900CF4020 /* WorldEngine.m in Sources */,
+				D4F683E21F79272900CF4020 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D4F683F11F79272900CF4020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D4F683F21F79272900CF4020 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D4F683F41F79272900CF4020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SeaWorldThunderDome/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.freddie-ink.SeaWorldThunderDome";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D4F683F51F79272900CF4020 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SeaWorldThunderDome/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.freddie-ink.SeaWorldThunderDome";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D4F683D81F79272900CF4020 /* Build configuration list for PBXProject "SeaWorldThunderDome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4F683F11F79272900CF4020 /* Debug */,
+				D4F683F21F79272900CF4020 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4F683F31F79272900CF4020 /* Build configuration list for PBXNativeTarget "SeaWorldThunderDome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4F683F41F79272900CF4020 /* Debug */,
+				D4F683F51F79272900CF4020 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D4F683D51F79272900CF4020 /* Project object */;
+}
