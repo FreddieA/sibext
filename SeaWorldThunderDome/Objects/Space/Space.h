@@ -12,6 +12,6 @@
 
 @interface Space : NSObject
 
-@property (nonatomic, copy) Creature *creature
+@property (nonatomic, copy) Creature *creature;
 
 @end

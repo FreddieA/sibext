@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40A22E61F7A8EC40052A576 /* NSObject+Count.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A22E51F7A8EC40052A576 /* NSObject+Count.m */; };
+		D40A22EB1F7A90960052A576 /* Orca.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A22EA1F7A90960052A576 /* Orca.m */; };
+		D40A22EE1F7A90A10052A576 /* Penguin.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A22ED1F7A90A10052A576 /* Penguin.m */; };
 		D4F683E21F79272900CF4020 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F683E11F79272900CF4020 /* AppDelegate.m */; };
 		D4F683E51F79272900CF4020 /* CageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F683E41F79272900CF4020 /* CageViewController.m */; };
 		D4F683EA1F79272900CF4020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F683E91F79272900CF4020 /* Assets.xcassets */; };
@@ -18,6 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D40A22E41F7A8EC40052A576 /* NSObject+Count.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Count.h"; sourceTree = "<group>"; };
+		D40A22E51F7A8EC40052A576 /* NSObject+Count.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Count.m"; sourceTree = "<group>"; };
+		D40A22E91F7A90960052A576 /* Orca.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Orca.h; sourceTree = "<group>"; };
+		D40A22EA1F7A90960052A576 /* Orca.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Orca.m; sourceTree = "<group>"; };
+		D40A22EC1F7A90A10052A576 /* Penguin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Penguin.h; sourceTree = "<group>"; };
+		D40A22ED1F7A90A10052A576 /* Penguin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Penguin.m; sourceTree = "<group>"; };
 		D4F683DD1F79272900CF4020 /* SeaWorldThunderDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaWorldThunderDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F683E01F79272900CF4020 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4F683E11F79272900CF4020 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -46,6 +55,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D40A22E31F7A8E2A0052A576 /* NSObject+Count */ = {
+			isa = PBXGroup;
+			children = (
+				D40A22E41F7A8EC40052A576 /* NSObject+Count.h */,
+				D40A22E51F7A8EC40052A576 /* NSObject+Count.m */,
+			);
+			path = "NSObject+Count";
+			sourceTree = "<group>";
+		};
+		D40A22E71F7A90780052A576 /* Penguin */ = {
+			isa = PBXGroup;
+			children = (
+				D40A22EC1F7A90A10052A576 /* Penguin.h */,
+				D40A22ED1F7A90A10052A576 /* Penguin.m */,
+			);
+			path = Penguin;
+			sourceTree = "<group>";
+		};
+		D40A22E81F7A907C0052A576 /* Orca */ = {
+			isa = PBXGroup;
+			children = (
+				D40A22E91F7A90960052A576 /* Orca.h */,
+				D40A22EA1F7A90960052A576 /* Orca.m */,
+			);
+			path = Orca;
+			sourceTree = "<group>";
+		};
 		D4F683D41F79272900CF4020 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +151,7 @@
 		D4F683FF1F792BC800CF4020 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				D40A22E31F7A8E2A0052A576 /* NSObject+Count */,
 				D4F684041F792F6700CF4020 /* Creature */,
 				D4F684031F792F3200CF4020 /* Space */,
 			);
@@ -133,6 +170,8 @@
 		D4F684041F792F6700CF4020 /* Creature */ = {
 			isa = PBXGroup;
 			children = (
+				D40A22E81F7A907C0052A576 /* Orca */,
+				D40A22E71F7A90780052A576 /* Penguin */,
 				D4F684051F792F7E00CF4020 /* Creature.h */,
 				D4F684061F792F7E00CF4020 /* Creature.m */,
 			);
@@ -212,9 +251,12 @@
 				D4F684021F792F0F00CF4020 /* Space.m in Sources */,
 				D4F683E51F79272900CF4020 /* CageViewController.m in Sources */,
 				D4F684071F792F7E00CF4020 /* Creature.m in Sources */,
+				D40A22EE1F7A90A10052A576 /* Penguin.m in Sources */,
 				D4F683F01F79272900CF4020 /* main.m in Sources */,
 				D4F683FB1F7927A900CF4020 /* WorldEngine.m in Sources */,
 				D4F683E21F79272900CF4020 /* AppDelegate.m in Sources */,
+				D40A22EB1F7A90960052A576 /* Orca.m in Sources */,
+				D40A22E61F7A8EC40052A576 /* NSObject+Count.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -318,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -10,6 +10,9 @@
 
 @interface WorldEngine : NSObject
 
+- (instancetype)initWithItemsPerRow:(int)itemsPerRow itemsCount:(int)itemsCount;
 - (void)runCycle;
+
+@property (readonly) NSArray *spaces;
 
 @end
