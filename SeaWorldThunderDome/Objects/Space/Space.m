@@ -7,7 +7,20 @@
 //
 
 #import "Space.h"
+#import "Creature.h"
 
 @implementation Space
+
+- (NSString *)imageName {
+    if (self.creature) {
+        return self.creature.imageName;
+    }
+    return @"wave";
+}
+
+- (void)setCreature:(Creature *)creature {
+    _creature = creature;
+    
+}
 
 @end

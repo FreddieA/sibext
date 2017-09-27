@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CageViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _window.tintColor = UIColor.whiteColor;
+    
+    [_window makeKeyAndVisible];
+    
+    _window.rootViewController = [CageViewController new];
+    
     return YES;
 }
 

@@ -7,10 +7,13 @@
 //
 
 #import "CageViewController.h"
+#import "CreatureViewCell.h"
+#import "WorldEngine.h"
 
-@interface CageViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface CageViewController () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) WorldEngine *engine;
 
 @end
 
@@ -18,11 +21,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [_collectionView registerNib:[UINib nibWithNibName:@"CreatureViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CreatureViewCell"];
+    
+    _engine = [[WorldEngine alloc] initWithItemsPerRow:10 itemsCount:150];
+    [_collectionView reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CreatureViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CreatureViewCell" forIndexPath:indexPath];
+    cell.space = _engine.spaces[indexPath.item];
+    return cell;
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return _engine.spaces.count;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    float width = floorf(collectionView.bounds.size.width / 10);
+    return CGSizeMake(width, width);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [_engine runCycle];
+    [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
 }
 
 @end

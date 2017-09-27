@@ -28,14 +28,14 @@
         _spaces = [Space objectsWithCount:itemsCount];
         
         int orcasCount = (int)((itemsCount * 5) / 100);
-        int penguinsCount = (itemsCount - orcasCount) / 2;
+        int penguinsCount = (int)((itemsCount - orcasCount) * 30 / 100);
         
         _creatures = [[Orca objectsWithCount:orcasCount] arrayByAddingObjectsFromArray:[Penguin objectsWithCount:penguinsCount]].mutableCopy;
         
         for (Creature *creature in _creatures) {
             NSArray *emptySpaces = [_spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature == nil"]];
             int randomIndex = arc4random_uniform((uint32_t)emptySpaces.count);
-            [_spaces[randomIndex] setCreature:creature];
+            [creature moveToSpace:_spaces[randomIndex]];
         }
     }
     return self;
@@ -44,10 +44,11 @@
 - (void)runCycle {
     for (Creature *creature in _creatures) {
         if ([self surroundingAreaForSpace:creature.space].count) {
-            [creature moveToSpace:[self surroundingAreaForSpace:creature.space].firstObject];
+            NSArray *area = [self surroundingAreaForSpace:creature.space];
+            [creature moveToSpace:area[arc4random_uniform((uint32_t)area.count)]];
         }
     }
-    _creatures = [_spaces valueForKey:@"creature"];
+    _creatures = [[_spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature != nil"]] valueForKey:@"creature"];
 }
 
 - (NSArray *)surroundingAreaForSpace:(Space *)space {
@@ -59,7 +60,7 @@
         int left = index - 1;
         [array addObject:_spaces[left]];
     }
-    if (index != _spaces.count) {
+    if (index < _spaces.count - 1) {
         int right = index + 1;
         [array addObject:_spaces[right]];
     }
@@ -69,8 +70,7 @@
     if (row < rowsCount && index + _itemsPerRow < _spaces.count) {
         [array addObject:_spaces[index + _itemsPerRow]];
     }
-    
-    return array;
+    return [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature == nil"]];
 }
 
 @end

@@ -14,5 +14,6 @@
 
 - (void)moveToSpace:(Space *)space;
 - (Space *)space;
+- (NSString *)imageName;
 
 @end

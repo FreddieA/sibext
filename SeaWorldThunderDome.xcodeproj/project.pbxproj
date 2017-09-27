@@ -10,6 +10,8 @@
 		D40A22E61F7A8EC40052A576 /* NSObject+Count.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A22E51F7A8EC40052A576 /* NSObject+Count.m */; };
 		D40A22EB1F7A90960052A576 /* Orca.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A22EA1F7A90960052A576 /* Orca.m */; };
 		D40A22EE1F7A90A10052A576 /* Penguin.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A22ED1F7A90A10052A576 /* Penguin.m */; };
+		D40A22F41F7B615B0052A576 /* CreatureViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A22F21F7B615B0052A576 /* CreatureViewCell.m */; };
+		D40A22F51F7B615B0052A576 /* CreatureViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D40A22F31F7B615B0052A576 /* CreatureViewCell.xib */; };
 		D4F683E21F79272900CF4020 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F683E11F79272900CF4020 /* AppDelegate.m */; };
 		D4F683E51F79272900CF4020 /* CageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F683E41F79272900CF4020 /* CageViewController.m */; };
 		D4F683EA1F79272900CF4020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F683E91F79272900CF4020 /* Assets.xcassets */; };
@@ -27,6 +29,9 @@
 		D40A22EA1F7A90960052A576 /* Orca.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Orca.m; sourceTree = "<group>"; };
 		D40A22EC1F7A90A10052A576 /* Penguin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Penguin.h; sourceTree = "<group>"; };
 		D40A22ED1F7A90A10052A576 /* Penguin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Penguin.m; sourceTree = "<group>"; };
+		D40A22F11F7B615B0052A576 /* CreatureViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatureViewCell.h; sourceTree = "<group>"; };
+		D40A22F21F7B615B0052A576 /* CreatureViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatureViewCell.m; sourceTree = "<group>"; };
+		D40A22F31F7B615B0052A576 /* CreatureViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatureViewCell.xib; sourceTree = "<group>"; };
 		D4F683DD1F79272900CF4020 /* SeaWorldThunderDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaWorldThunderDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F683E01F79272900CF4020 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4F683E11F79272900CF4020 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -80,6 +85,16 @@
 				D40A22EA1F7A90960052A576 /* Orca.m */,
 			);
 			path = Orca;
+			sourceTree = "<group>";
+		};
+		D40A22F01F7B61400052A576 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				D40A22F11F7B615B0052A576 /* CreatureViewCell.h */,
+				D40A22F21F7B615B0052A576 /* CreatureViewCell.m */,
+				D40A22F31F7B615B0052A576 /* CreatureViewCell.xib */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		D4F683D41F79272900CF4020 = {
@@ -141,6 +156,7 @@
 		D4F683FC1F7927AF00CF4020 /* CageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D40A22F01F7B61400052A576 /* New Group */,
 				D4F683E31F79272900CF4020 /* CageViewController.h */,
 				D4F683E41F79272900CF4020 /* CageViewController.m */,
 				D4F683FD1F7929A000CF4020 /* CageViewController.xib */,
@@ -237,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F683FE1F7929A000CF4020 /* CageViewController.xib in Resources */,
+				D40A22F51F7B615B0052A576 /* CreatureViewCell.xib in Resources */,
 				D4F683EA1F79272900CF4020 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F684021F792F0F00CF4020 /* Space.m in Sources */,
+				D40A22F41F7B615B0052A576 /* CreatureViewCell.m in Sources */,
 				D4F683E51F79272900CF4020 /* CageViewController.m in Sources */,
 				D4F684071F792F7E00CF4020 /* Creature.m in Sources */,
 				D40A22EE1F7A90A10052A576 /* Penguin.m in Sources */,

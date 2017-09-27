@@ -10,4 +10,8 @@
 
 @implementation Penguin
 
+- (NSString *)imageName {
+    return @"tux";
+}
+
 @end

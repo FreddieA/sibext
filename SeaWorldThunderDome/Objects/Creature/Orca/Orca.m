@@ -10,4 +10,8 @@
 
 @implementation Orca
 
+- (NSString *)imageName {
+    return @"orca";
+}
+
 @end

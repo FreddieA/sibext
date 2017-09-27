@@ -12,6 +12,8 @@
 
 @interface Space : NSObject
 
-@property (nonatomic, copy) Creature *creature;
+@property (nonatomic, strong) Creature *creature;
+
+- (NSString *)imageName;
 
 @end
