@@ -31,6 +31,12 @@
         int penguinsCount = (itemsCount - orcasCount) / 2;
         
         _creatures = [[Orca objectsWithCount:orcasCount] arrayByAddingObjectsFromArray:[Penguin objectsWithCount:penguinsCount]].mutableCopy;
+        
+        for (Creature *creature in _creatures) {
+            NSArray *emptySpaces = [_spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature == nil"]];
+            int randomIndex = arc4random_uniform((uint32_t)emptySpaces.count);
+            [_spaces[randomIndex] setCreature:creature];
+        }
     }
     return self;
 }
@@ -41,7 +47,7 @@
             [creature moveToSpace:[self surroundingAreaForSpace:creature.space].firstObject];
         }
     }
-    
+    _creatures = [_spaces valueForKey:@"creature"];
 }
 
 - (NSArray *)surroundingAreaForSpace:(Space *)space {
