@@ -97,6 +97,13 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		D40A22F91F7B9F730052A576 /* NSarr */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NSarr;
+			sourceTree = "<group>";
+		};
 		D4F683D41F79272900CF4020 = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +174,7 @@
 		D4F683FF1F792BC800CF4020 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				D40A22F91F7B9F730052A576 /* NSarr */,
 				D40A22E31F7A8E2A0052A576 /* NSObject+Count */,
 				D4F684041F792F6700CF4020 /* Creature */,
 				D4F684031F792F3200CF4020 /* Space */,

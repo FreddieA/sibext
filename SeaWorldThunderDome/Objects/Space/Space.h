@@ -17,5 +17,6 @@
 @property (nonatomic) int yIndex;
 
 - (NSString *)imageName;
+- (void)refresh;
 
 @end

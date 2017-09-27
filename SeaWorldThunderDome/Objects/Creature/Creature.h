@@ -13,7 +13,15 @@
 @interface Creature : NSObject
 
 - (void)moveToSpace:(Space *)space;
+- (void)refreshAP;
+
 - (Space *)space;
 - (NSString *)imageName;
+
+- (BOOL)dead;
+- (BOOL)tryToReproduceInArea:(NSArray *)spaces;
++ (Space *)preferredSpaceFromSpaces:(NSArray *)spaces;
+
++ (int)turnsNeededToReproduce;
 
 @end

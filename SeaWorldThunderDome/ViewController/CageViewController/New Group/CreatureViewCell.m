@@ -19,7 +19,8 @@
 @implementation CreatureViewCell
 
 - (void)setSpace:(Space *)space {
-    _imageView.image = [UIImage imageNamed:space.imageName];
+    _space = space;
+    _imageView.image = [UIImage imageNamed:_space.imageName];
 }
 
 @end

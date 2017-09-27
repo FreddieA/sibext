@@ -18,9 +18,12 @@
     return @"wave";
 }
 
-- (void)setCreature:(Creature *)creature {
-    _creature = creature;
-    
+- (void)refresh {
+    if (_creature.dead) {
+        _creature = nil;
+    } else {
+        [_creature refreshAP];
+    }
 }
 
 @end

@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class Space;
+
 @interface WorldEngine : NSObject
 
 - (instancetype)initWithItemsPerRow:(int)itemsPerRow itemsCount:(int)itemsCount;
+
 - (void)runCycleWithCompletion:(dispatch_block_t)completion;
+
+- (NSArray *)surroundingAreaForSpace:(Space *)space;
 
 @property (readonly) NSArray *spaces;
 

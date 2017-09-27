@@ -13,9 +13,12 @@
 #import "Orca.h"
 #import "Penguin.h"
 
+const int kOrcasPercent = 5;
+const int kPenguinsPercent = 50;
+
 @interface WorldEngine()
 
-@property (nonatomic, strong) NSArray *creatures;
+@property (nonatomic, strong) NSMutableArray *creatures;
 @property (nonatomic) int itemsPerRow;
 
 @end
@@ -32,15 +35,13 @@
             space.yIndex = (int)[_spaces indexOfObject:space] / _itemsPerRow;
         }
         
-        int orcasCount = (int)((itemsCount * 5) / 100);
-        int penguinsCount = (int)((itemsCount - orcasCount) * 30 / 100);
+        int orcasCount = (int)((itemsCount * kOrcasPercent) / 100);
+        int penguinsCount = (int)((itemsCount - orcasCount) * kPenguinsPercent / 100);
         
-        _creatures = [[Orca objectsWithCount:orcasCount] arrayByAddingObjectsFromArray:[Penguin objectsWithCount:penguinsCount]];
+        _creatures = [[Orca objectsWithCount:orcasCount] arrayByAddingObjectsFromArray:[Penguin objectsWithCount:penguinsCount]].mutableCopy;
         
         for (Creature *creature in _creatures) {
-            NSArray *emptySpaces = [_spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature == nil"]];
-            int randomIndex = arc4random_uniform((uint32_t)emptySpaces.count);
-            [creature moveToSpace:_spaces[randomIndex]];
+            [creature moveToSpace:[creature.class preferredSpaceFromSpaces:_spaces]];
         }
     }
     return self;
@@ -48,13 +49,15 @@
 
 - (void)runCycleWithCompletion:(dispatch_block_t)completion {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        for (Creature *creature in _creatures) {
-            if ([self surroundingAreaForSpace:creature.space].count) {
-                NSArray *area = [self surroundingAreaForSpace:creature.space];
-                [creature moveToSpace:area[arc4random_uniform((uint32_t)area.count)]];
+        for (Space *space in _spaces) {
+            if (!space.creature.dead) {
+                NSArray *area = [self surroundingAreaForSpace:space];
+                if (![space.creature tryToReproduceInArea:area]) {
+                    [space.creature moveToSpace:[space.creature.class preferredSpaceFromSpaces:area]];
+                }
             }
         }
-        _creatures = [[_spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature != nil"]] valueForKey:@"creature"];
+        [_spaces makeObjectsPerformSelector:@selector(refresh)];
         dispatch_async(dispatch_get_main_queue(), ^{
             if(completion) {
                 completion();
@@ -74,8 +77,7 @@
                 [array addObject:obj];
             }
     }];
-    
-    return [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature == nil"]];
+    return array;
 }
 
 @end

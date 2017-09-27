@@ -8,9 +8,15 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CageViewController">
             <connections>
+                <outlet property="autoSwitch" destination="5uV-xr-Nwk" id="TAi-1G-erM"/>
                 <outlet property="collectionView" destination="bRd-ZP-OST" id="rtg-ke-eQA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DYA-le-6fY"/>
             </connections>
@@ -21,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bRd-ZP-OST">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ak6-ey-mth">
                         <size key="itemSize" width="50" height="50"/>
@@ -34,15 +40,55 @@
                         <outlet property="delegate" destination="-1" id="C5M-ao-Cac"/>
                     </connections>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7B9-aL-Kda">
+                    <rect key="frame" x="0.0" y="597" width="375" height="70"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSr-xK-0Hz">
+                            <rect key="frame" x="30" y="17" width="54" height="36"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                            <color key="tintColor" red="0.074509803920000006" green="0.60784313729999995" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Reset"/>
+                            <connections>
+                                <action selector="resetAction:" destination="-1" eventType="touchUpInside" id="MKF-ld-vR1"/>
+                            </connections>
+                        </button>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5uV-xr-Nwk">
+                            <rect key="frame" x="296" y="19" width="51" height="31"/>
+                            <connections>
+                                <action selector="autoPlayAction:" destination="-1" eventType="valueChanged" id="uxg-6I-XxN"/>
+                            </connections>
+                        </switch>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7l-a8-Zmo">
+                            <rect key="frame" x="240" y="23.5" width="41" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="cSr-xK-0Hz" firstAttribute="centerY" secondItem="7B9-aL-Kda" secondAttribute="centerY" id="B3d-cJ-IbJ"/>
+                        <constraint firstItem="Z7l-a8-Zmo" firstAttribute="centerY" secondItem="7B9-aL-Kda" secondAttribute="centerY" id="Csw-em-Hgc"/>
+                        <constraint firstItem="5uV-xr-Nwk" firstAttribute="centerY" secondItem="7B9-aL-Kda" secondAttribute="centerY" id="N5d-cP-Bng"/>
+                        <constraint firstAttribute="trailing" secondItem="5uV-xr-Nwk" secondAttribute="trailing" constant="30" id="aSF-Px-sZz"/>
+                        <constraint firstItem="5uV-xr-Nwk" firstAttribute="leading" secondItem="Z7l-a8-Zmo" secondAttribute="trailing" constant="15" id="hxj-VX-dmA"/>
+                        <constraint firstItem="cSr-xK-0Hz" firstAttribute="leading" secondItem="7B9-aL-Kda" secondAttribute="leading" constant="30" id="naQ-p1-SlJ"/>
+                        <constraint firstAttribute="height" constant="70" id="noJ-85-Dh6"/>
+                        <constraint firstItem="Z7l-a8-Zmo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cSr-xK-0Hz" secondAttribute="trailing" constant="15" id="vnD-FF-ODx"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="bRd-ZP-OST" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="2t5-uP-ycV"/>
                 <constraint firstItem="bRd-ZP-OST" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="50O-N7-hxs"/>
-                <constraint firstItem="bRd-ZP-OST" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="h2n-J8-uAW"/>
+                <constraint firstItem="7B9-aL-Kda" firstAttribute="top" secondItem="bRd-ZP-OST" secondAttribute="bottom" id="aQV-IG-VoT"/>
+                <constraint firstItem="7B9-aL-Kda" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cWX-EJ-BCW"/>
                 <constraint firstItem="bRd-ZP-OST" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jOD-vJ-E37"/>
+                <constraint firstAttribute="bottom" secondItem="7B9-aL-Kda" secondAttribute="bottom" id="tuP-hn-Pq0"/>
+                <constraint firstAttribute="trailing" secondItem="7B9-aL-Kda" secondAttribute="trailing" id="vy7-aE-KsG"/>
             </constraints>
-            <point key="canvasLocation" x="-105" y="37"/>
+            <point key="canvasLocation" x="-105.5" y="36.5"/>
         </view>
     </objects>
 </document>
