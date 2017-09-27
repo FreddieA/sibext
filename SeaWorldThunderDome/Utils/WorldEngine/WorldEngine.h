@@ -11,7 +11,7 @@
 @interface WorldEngine : NSObject
 
 - (instancetype)initWithItemsPerRow:(int)itemsPerRow itemsCount:(int)itemsCount;
-- (void)runCycle;
+- (void)runCycleWithCompletion:(dispatch_block_t)completion;
 
 @property (readonly) NSArray *spaces;
 

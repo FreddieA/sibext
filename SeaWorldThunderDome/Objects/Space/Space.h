@@ -13,6 +13,8 @@
 @interface Space : NSObject
 
 @property (nonatomic, strong) Creature *creature;
+@property (nonatomic) int xIndex;
+@property (nonatomic) int yIndex;
 
 - (NSString *)imageName;
 

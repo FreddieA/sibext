@@ -44,8 +44,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [_engine runCycle];
-    [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    [_engine runCycleWithCompletion:^{
+        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    }];
 }
 
 @end

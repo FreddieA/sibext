@@ -15,7 +15,7 @@
 
 @interface WorldEngine()
 
-@property (nonatomic, strong) NSMutableArray *creatures;
+@property (nonatomic, strong) NSArray *creatures;
 @property (nonatomic) int itemsPerRow;
 
 @end
@@ -27,10 +27,15 @@
         _itemsPerRow = itemsPerRow;
         _spaces = [Space objectsWithCount:itemsCount];
         
+        for (Space *space in _spaces) {
+            space.xIndex = [_spaces indexOfObject:space] % itemsPerRow;
+            space.yIndex = (int)[_spaces indexOfObject:space] / _itemsPerRow;
+        }
+        
         int orcasCount = (int)((itemsCount * 5) / 100);
         int penguinsCount = (int)((itemsCount - orcasCount) * 30 / 100);
         
-        _creatures = [[Orca objectsWithCount:orcasCount] arrayByAddingObjectsFromArray:[Penguin objectsWithCount:penguinsCount]].mutableCopy;
+        _creatures = [[Orca objectsWithCount:orcasCount] arrayByAddingObjectsFromArray:[Penguin objectsWithCount:penguinsCount]];
         
         for (Creature *creature in _creatures) {
             NSArray *emptySpaces = [_spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature == nil"]];
@@ -41,35 +46,35 @@
     return self;
 }
 
-- (void)runCycle {
-    for (Creature *creature in _creatures) {
-        if ([self surroundingAreaForSpace:creature.space].count) {
-            NSArray *area = [self surroundingAreaForSpace:creature.space];
-            [creature moveToSpace:area[arc4random_uniform((uint32_t)area.count)]];
+- (void)runCycleWithCompletion:(dispatch_block_t)completion {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        for (Creature *creature in _creatures) {
+            if ([self surroundingAreaForSpace:creature.space].count) {
+                NSArray *area = [self surroundingAreaForSpace:creature.space];
+                [creature moveToSpace:area[arc4random_uniform((uint32_t)area.count)]];
+            }
         }
-    }
-    _creatures = [[_spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature != nil"]] valueForKey:@"creature"];
+        _creatures = [[_spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature != nil"]] valueForKey:@"creature"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(completion) {
+                completion();
+            }
+        });
+    });
 }
 
 - (NSArray *)surroundingAreaForSpace:(Space *)space {
     NSMutableArray *array = [NSMutableArray new];
-    int index = (int)[_spaces indexOfObject:space];
-    int rowsCount = (int)_spaces.count / _itemsPerRow;
-    int row = floor(index / _itemsPerRow);
-    if (index > 0) {
-        int left = index - 1;
-        [array addObject:_spaces[left]];
-    }
-    if (index < _spaces.count - 1) {
-        int right = index + 1;
-        [array addObject:_spaces[right]];
-    }
-    if (row > 0 && index - _itemsPerRow >= 0) {
-        [array addObject:_spaces[index - _itemsPerRow]];
-    }
-    if (row < rowsCount && index + _itemsPerRow < _spaces.count) {
-        [array addObject:_spaces[index + _itemsPerRow]];
-    }
+    
+    [_spaces enumerateObjectsUsingBlock:^(Space *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (((obj.yIndex == space.yIndex - 1 || obj.yIndex == space.yIndex + 1) &&
+             (obj.xIndex == space.xIndex + 1 || obj.xIndex == space.xIndex - 1)) ||
+            ((obj.yIndex == space.yIndex && (obj.xIndex == space.xIndex + 1 || obj.xIndex == space.xIndex - 1)) ||
+             (obj.xIndex == space.xIndex && (obj.yIndex == space.yIndex + 1 || obj.yIndex == space.yIndex - 1)))) {
+                [array addObject:obj];
+            }
+    }];
+    
     return [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature == nil"]];
 }
 
