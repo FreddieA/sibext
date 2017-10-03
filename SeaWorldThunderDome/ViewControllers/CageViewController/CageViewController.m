@@ -9,6 +9,8 @@
 #import "CageViewController.h"
 #import "CreatureViewCell.h"
 #import "WorldEngine.h"
+#import "NSArray+Random.h"
+#import "NSIndexPath+Array.h"
 
 const int kItemsCount = 150;
 const int kItemsPerRow = 10;
@@ -40,8 +42,9 @@ const int kItemsPerRow = 10;
 }
 
 - (void)autoPlay:(NSTimer *)timer {
-    [_engine runCycleWithCompletion:^{
-        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    [_engine runCycleWithCompletion:^(NSArray *changedSpaces){
+        [_collectionView reloadItemsAtIndexPaths:[NSIndexPath indexPathsFromIndexesArray:changedSpaces]];
+        //[_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
     }];
 }
 
@@ -84,8 +87,9 @@ const int kItemsPerRow = 10;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [_engine runCycleWithCompletion:^{
-        [_collectionView reloadItemsAtIndexPaths:_engine.updatedIndexes];
+    [_engine runCycleWithCompletion:^(NSArray *changedSpaces){
+        //[_collectionView reloadItemsAtIndexPaths:[NSIndexPath indexPathsFromIndexesArray:changedSpaces]];
+        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
     }];
 }
 

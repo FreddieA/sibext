@@ -10,7 +10,7 @@
 
 @class Space;
 
-@interface Creature : NSObject <NSCopying>
+@interface Creature : NSObject
 
 - (void)moveToSpace:(Space *)space;
 - (void)refresh;

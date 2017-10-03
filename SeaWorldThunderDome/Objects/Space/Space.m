@@ -26,12 +26,4 @@
     }
 }
 
-- (id)copyWithZone:(nullable NSZone *)zone {
-    Space *space = [Space new];
-    space.creature = [self.creature copy];
-    space.xIndex = self.xIndex;
-    space.yIndex = self.yIndex;
-    return space;
-}
-
 @end

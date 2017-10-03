@@ -20,7 +20,6 @@ const float kPenguinsPercent = 50.0;
 @interface WorldEngine()
 
 @property (nonatomic, strong) NSMutableArray<Creature *> *creatures;
-@property (nonatomic, strong) NSMutableArray<NSIndexPath *> *spacesToUpdate;
 @property (nonatomic) int itemsPerRow;
 
 @end
@@ -29,6 +28,9 @@ const float kPenguinsPercent = 50.0;
 
 - (instancetype)initWithItemsPerRow:(int)itemsPerRow itemsCount:(int)itemsCount {
     if (self = [super init]) {
+        
+        NSAssert(kOrcasPercent + kPenguinsPercent <= 100.0 ,@"Creatures percentage must be below or equal to 100 percent");
+        
         _itemsPerRow = itemsPerRow;
         _spaces = [Space objectsWithCount:itemsCount];
         
@@ -49,14 +51,12 @@ const float kPenguinsPercent = 50.0;
     return self;
 }
 
-- (void)runCycleWithCompletion:(dispatch_block_t)completion {
+- (void)runCycleWithCompletion:(void(^)(NSArray *changedSpaces))completion {
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
-        weakSelf.spacesToUpdate = [NSMutableArray new];
-        NSArray *oldSpacesState = [[NSArray alloc] initWithArray:weakSelf.spaces copyItems:YES];
-        
-        for (Space *space in self.spaces) {
+        NSArray *classes = [weakSelf.spaces valueForKeyPath:@"creature.class"];
+        for (Space *space in weakSelf.spaces) {
             if (!space.creature.isDead) {
                 NSArray *area = [weakSelf surroundingAreaForSpace:space];
                 if (![space.creature canReproduceInArea:area]) {
@@ -64,23 +64,21 @@ const float kPenguinsPercent = 50.0;
                 }
             }
         }
-        for (int i = 0; i < self.spaces.count; i++) {
-            Space *space = self.spaces[i];
-            [space refresh];
-            if (space.creature != [oldSpacesState[i] creature]) {
-                [weakSelf.spacesToUpdate addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+        [weakSelf.spaces makeObjectsPerformSelector:@selector(refresh)];
+        
+        NSMutableArray *changedIndexes = [NSMutableArray array];
+        for (Space *space in weakSelf.spaces) {
+            NSUInteger index = [weakSelf.spaces indexOfObject:space];
+            if (![space.creature.class isEqual:classes[index]]) {
+                [changedIndexes addObject:@(index)];
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             if(completion) {
-                completion();
+                completion(changedIndexes);
             }
         });
     });
-}
-
-- (NSArray *)updatedIndexes {
-    return self.spacesToUpdate;
 }
 
 - (NSArray *)surroundingAreaForSpace:(Space *)space {

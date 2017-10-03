@@ -74,11 +74,4 @@
     return nil;
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-    Creature *creature = [Creature new];
-    creature.reproduceCount = self.reproduceCount;
-    creature.movedThisTurn = self.movedThisTurn;
-    return creature;
-}
-
 @end

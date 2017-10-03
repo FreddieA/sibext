@@ -8,17 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    GameWonByNoone,
+    GameWonByPenguins,
+    GameWonByOrcas
+} GameWonBy;
+
 @class Space;
 
 @interface WorldEngine : NSObject
 
 - (instancetype)initWithItemsPerRow:(int)itemsPerRow itemsCount:(int)itemsCount;
 
-- (void)runCycleWithCompletion:(dispatch_block_t)completion;
-
-- (NSArray *)surroundingAreaForSpace:(Space *)space;
+- (void)runCycleWithCompletion:(void(^)(NSArray *changedSpaces))completion;
 
 @property (readonly) NSArray<Space *> *spaces;
-@property (readonly) NSArray<NSIndexPath *> *updatedIndexes;
+@property (nonatomic, strong) void (^endGameCallback)(GameWonBy winner);
 
 @end

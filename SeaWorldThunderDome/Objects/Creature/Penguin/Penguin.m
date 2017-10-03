@@ -15,11 +15,6 @@
     return @"tux";
 }
 
-+ (Space *)preferredSpaceFromSpaces:(NSArray *)spaces {
-    Space *space = [super preferredSpaceFromSpaces:spaces];
-    return (space.creature) ? nil : space;
-}
-
 + (int)turnsNeededToReproduce {
     return 3;
 }
