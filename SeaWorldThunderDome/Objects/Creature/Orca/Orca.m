@@ -23,6 +23,10 @@
     return @"orca";
 }
 
+- (NSString *)winText {
+    return @"Orcas won. They call them Killer whales for a reason";
+}
+
 - (void)moveToSpace:(Space *)space {
     if ([space.creature isKindOfClass:Penguin.class]) {
         self.deathCount = 0;

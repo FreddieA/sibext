@@ -11,6 +11,7 @@
 #import "WorldEngine.h"
 #import "NSArray+Random.h"
 #import "NSIndexPath+Array.h"
+#import "Creature.h"
 
 const int kItemsCount = 150;
 const int kItemsPerRow = 10;
@@ -19,9 +20,11 @@ const int kItemsPerRow = 10;
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet UISwitch *autoSwitch;
+@property (nonatomic, weak) IBOutlet UILabel *winnerLabel;
 
 @property (nonatomic, strong) WorldEngine *engine;
 @property (nonatomic, strong) NSTimer *timer;
+
 
 @end
 
@@ -36,15 +39,27 @@ const int kItemsPerRow = 10;
 }
 
 - (void)reloadDataSource {
+    __weak typeof(self) weakSelf = self;
+    
     _engine = [[WorldEngine alloc] initWithItemsPerRow:kItemsPerRow itemsCount:kItemsCount];
+    _engine.endGameCallback = ^(Class winnerClass) {
+        [weakSelf showWinnerCreature:[winnerClass new]];
+    };
+    
     [_engine runCycleWithCompletion:nil];
     [_collectionView reloadData];
+}
+
+- (void)showWinnerCreature:(Creature *)creature {
+    [_timer invalidate];
+    _winnerLabel.text = creature.winText;
+    _winnerLabel.userInteractionEnabled = YES;
+    _winnerLabel.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
 }
 
 - (void)autoPlay:(NSTimer *)timer {
     [_engine runCycleWithCompletion:^(NSArray *changedSpaces){
         [_collectionView reloadItemsAtIndexPaths:[NSIndexPath indexPathsFromIndexesArray:changedSpaces]];
-        //[_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
     }];
 }
 
@@ -60,13 +75,19 @@ const int kItemsPerRow = 10;
 }
 
 - (IBAction)resetAction:(id)sender {
-    if (_timer) {
+    _winnerLabel.userInteractionEnabled = NO;
+    _winnerLabel.text = nil;
+    _winnerLabel.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.0];
+    _autoSwitch.on = NO;
+    
+    if (_timer.isValid) {
         [_timer invalidate];
-        _autoSwitch.on = NO;
-    }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self reloadDataSource];
+        });
+    } else {
         [self reloadDataSource];
-    });
+    }
 }
 
 #pragma mark UICollectionView methods
@@ -88,8 +109,7 @@ const int kItemsPerRow = 10;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [_engine runCycleWithCompletion:^(NSArray *changedSpaces){
-        //[_collectionView reloadItemsAtIndexPaths:[NSIndexPath indexPathsFromIndexesArray:changedSpaces]];
-        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        [_collectionView reloadItemsAtIndexPaths:[NSIndexPath indexPathsFromIndexesArray:changedSpaces]];
     }];
 }
 

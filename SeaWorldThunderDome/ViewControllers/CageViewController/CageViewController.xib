@@ -19,6 +19,7 @@
                 <outlet property="autoSwitch" destination="5uV-xr-Nwk" id="TAi-1G-erM"/>
                 <outlet property="collectionView" destination="bRd-ZP-OST" id="rtg-ke-eQA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DYA-le-6fY"/>
+                <outlet property="winnerLabel" destination="ZRE-DP-uyU" id="tex-3c-jnT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -77,13 +78,24 @@
                         <constraint firstItem="Z7l-a8-Zmo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cSr-xK-0Hz" secondAttribute="trailing" constant="15" id="vnD-FF-ODx"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRE-DP-uyU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="40"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="bRd-ZP-OST" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="2t5-uP-ycV"/>
                 <constraint firstItem="bRd-ZP-OST" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="50O-N7-hxs"/>
+                <constraint firstItem="ZRE-DP-uyU" firstAttribute="bottom" secondItem="bRd-ZP-OST" secondAttribute="bottom" id="C5M-xx-iRl"/>
+                <constraint firstItem="ZRE-DP-uyU" firstAttribute="leading" secondItem="bRd-ZP-OST" secondAttribute="leading" id="I7Z-xB-nWJ"/>
+                <constraint firstItem="ZRE-DP-uyU" firstAttribute="top" secondItem="bRd-ZP-OST" secondAttribute="top" id="YnL-ud-yq1"/>
                 <constraint firstItem="7B9-aL-Kda" firstAttribute="top" secondItem="bRd-ZP-OST" secondAttribute="bottom" id="aQV-IG-VoT"/>
                 <constraint firstItem="7B9-aL-Kda" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cWX-EJ-BCW"/>
+                <constraint firstItem="ZRE-DP-uyU" firstAttribute="trailing" secondItem="bRd-ZP-OST" secondAttribute="trailing" id="dR4-bJ-8td"/>
                 <constraint firstItem="bRd-ZP-OST" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jOD-vJ-E37"/>
                 <constraint firstAttribute="bottom" secondItem="7B9-aL-Kda" secondAttribute="bottom" id="tuP-hn-Pq0"/>
                 <constraint firstAttribute="trailing" secondItem="7B9-aL-Kda" secondAttribute="trailing" id="vy7-aE-KsG"/>

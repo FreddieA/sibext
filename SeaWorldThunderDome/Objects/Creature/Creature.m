@@ -74,4 +74,8 @@
     return nil;
 }
 
+- (NSString *)winText {
+    return nil;
+}
+
 @end

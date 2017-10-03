@@ -17,6 +17,7 @@
 
 - (Space *)space;
 - (NSString *)imageName;
+- (NSString *)winText;
 
 - (BOOL)isDead;
 - (BOOL)canReproduceInArea:(NSArray *)spaces;

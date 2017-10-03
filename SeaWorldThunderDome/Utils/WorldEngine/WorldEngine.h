@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum : NSUInteger {
-    GameWonByNoone,
-    GameWonByPenguins,
-    GameWonByOrcas
-} GameWonBy;
-
 @class Space;
 
 @interface WorldEngine : NSObject
@@ -23,6 +17,6 @@ typedef enum : NSUInteger {
 - (void)runCycleWithCompletion:(void(^)(NSArray *changedSpaces))completion;
 
 @property (readonly) NSArray<Space *> *spaces;
-@property (nonatomic, strong) void (^endGameCallback)(GameWonBy winner);
+@property (nonatomic, strong) void(^endGameCallback)(Class winnerClass);
 
 @end

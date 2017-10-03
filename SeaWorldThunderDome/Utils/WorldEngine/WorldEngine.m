@@ -73,12 +73,25 @@ const float kPenguinsPercent = 50.0;
                 [changedIndexes addObject:@(index)];
             }
         }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             if(completion) {
                 completion(changedIndexes);
             }
+            [weakSelf checkForDominantSpecies];
         });
     });
+}
+
+- (void)checkForDominantSpecies {
+    if (self.endGameCallback) {
+        NSArray *creatureClasses = [self.spaces valueForKeyPath:@"creature.class"];
+        if (![creatureClasses containsObject:Penguin.class]) {
+            self.endGameCallback(Orca.class);
+        } else if(![creatureClasses containsObject:Orca.class]) {
+            self.endGameCallback(Penguin.class);
+        }
+    }
 }
 
 - (NSArray *)surroundingAreaForSpace:(Space *)space {

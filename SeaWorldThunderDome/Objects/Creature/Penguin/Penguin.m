@@ -19,4 +19,8 @@
     return 3;
 }
 
+- (NSString *)winText {
+    return @"Penguins won. Hail our new flightless overlords";
+}
+
 @end
