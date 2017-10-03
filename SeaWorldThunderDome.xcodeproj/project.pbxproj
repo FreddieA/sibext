@@ -87,21 +87,14 @@
 			path = Orca;
 			sourceTree = "<group>";
 		};
-		D40A22F01F7B61400052A576 /* New Group */ = {
+		D40A22F01F7B61400052A576 /* CreatureViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				D40A22F11F7B615B0052A576 /* CreatureViewCell.h */,
 				D40A22F21F7B615B0052A576 /* CreatureViewCell.m */,
 				D40A22F31F7B615B0052A576 /* CreatureViewCell.xib */,
 			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		D40A22F91F7B9F730052A576 /* NSarr */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NSarr;
+			path = CreatureViewCell;
 			sourceTree = "<group>";
 		};
 		D4F683D41F79272900CF4020 = {
@@ -163,7 +156,7 @@
 		D4F683FC1F7927AF00CF4020 /* CageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D40A22F01F7B61400052A576 /* New Group */,
+				D40A22F01F7B61400052A576 /* CreatureViewCell */,
 				D4F683E31F79272900CF4020 /* CageViewController.h */,
 				D4F683E41F79272900CF4020 /* CageViewController.m */,
 				D4F683FD1F7929A000CF4020 /* CageViewController.xib */,
@@ -174,7 +167,6 @@
 		D4F683FF1F792BC800CF4020 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				D40A22F91F7B9F730052A576 /* NSarr */,
 				D40A22E31F7A8E2A0052A576 /* NSObject+Count */,
 				D4F684041F792F6700CF4020 /* Creature */,
 				D4F684031F792F3200CF4020 /* Space */,

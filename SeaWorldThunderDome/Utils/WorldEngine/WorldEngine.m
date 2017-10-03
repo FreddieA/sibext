@@ -36,7 +36,7 @@ const int kPenguinsPercent = 50;
         }
         
         int orcasCount = (int)((itemsCount * kOrcasPercent) / 100);
-        int penguinsCount = (int)((itemsCount - orcasCount) * kPenguinsPercent / 100);
+        int penguinsCount = (int)((itemsCount * kPenguinsPercent) / 100);
         
         _creatures = [[Orca objectsWithCount:orcasCount] arrayByAddingObjectsFromArray:[Penguin objectsWithCount:penguinsCount]].mutableCopy;
         
@@ -48,16 +48,17 @@ const int kPenguinsPercent = 50;
 }
 
 - (void)runCycleWithCompletion:(dispatch_block_t)completion {
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         for (Space *space in _spaces) {
             if (!space.creature.dead) {
-                NSArray *area = [self surroundingAreaForSpace:space];
+                NSArray *area = [weakSelf surroundingAreaForSpace:space];
                 if (![space.creature tryToReproduceInArea:area]) {
                     [space.creature moveToSpace:[space.creature.class preferredSpaceFromSpaces:area]];
                 }
             }
         }
-        [_spaces makeObjectsPerformSelector:@selector(refresh)];
+        [weakSelf.spaces makeObjectsPerformSelector:@selector(refresh)];
         dispatch_async(dispatch_get_main_queue(), ^{
             if(completion) {
                 completion();
