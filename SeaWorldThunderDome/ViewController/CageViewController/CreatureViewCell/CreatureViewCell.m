@@ -23,4 +23,8 @@
     _imageView.image = [UIImage imageNamed:_space.imageName];
 }
 
++ (NSString *)tableReuseIdentifier {
+    return NSStringFromClass(self.class);
+}
+
 @end

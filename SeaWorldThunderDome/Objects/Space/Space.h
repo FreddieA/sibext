@@ -10,7 +10,7 @@
 
 @class Creature;
 
-@interface Space : NSObject
+@interface Space : NSObject <NSCopying>
 
 @property (nonatomic, strong) Creature *creature;
 @property (nonatomic) int xIndex;

@@ -6,6 +6,7 @@
 //  Copyright © 2017 freddie-ink. All rights reserved.
 //
 
+#import "NSArray+Random.h"
 #import "Creature.h"
 #import "Space.h"
 
@@ -14,42 +15,42 @@
 @property (nonatomic, weak) Space *space;
 @property (nonatomic) BOOL movedThisTurn;
 
-@property (nonatomic) int reproduceCounter;
+@property (nonatomic) int reproduceCount;
 
 @end
 
 @implementation Creature
 
 - (void)moveToSpace:(Space *)space {
-    if (space && !_movedThisTurn) {
-        Space *oldSpace = _space;
-        _space = space;
+    if (space && !self.movedThisTurn) {
+        Space *oldSpace = self.space;
+        self.space = space;
         space.creature = self;
         oldSpace.creature = nil;
         
-        _movedThisTurn = YES;
-        _reproduceCounter++;
+        self.movedThisTurn = YES;
+        self.reproduceCount++;
     }
 }
 
-- (BOOL)dead {
+- (BOOL)isDead {
     return NO;
 }
 
-- (void)refreshAP {
-    _movedThisTurn = NO;
+- (void)refresh {
+    self.movedThisTurn = NO;
 }
 
 + (int)turnsNeededToReproduce {
     return -1;
 }
 
-- (BOOL)tryToReproduceInArea:(NSArray *)spaces {
-    if (_reproduceCounter == [self.class turnsNeededToReproduce]) {
-        _reproduceCounter = 0;
+- (BOOL)canReproduceInArea:(NSArray *)spaces {
+    if (self.reproduceCount == [self.class turnsNeededToReproduce]) {
+        self.reproduceCount = 0;
         NSArray *array = [spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature == nil"]];
         if (array.count) {
-            Space *space = array[arc4random_uniform((int32_t)array.count)];
+            Space *space = array.randomObject;
             space.creature = [self.class new];
             return YES;
         }
@@ -58,8 +59,9 @@
 }
 
 + (Space *)preferredSpaceFromSpaces:(NSArray *)spaces {
-    if (spaces.count) {
-        return spaces[arc4random_uniform((uint32_t)spaces.count)];
+    NSArray *emtyTiles = [spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature == nil"]];
+    if (emtyTiles.count) {
+        return emtyTiles.randomObject;
     }
     return nil;
 }
@@ -70,6 +72,13 @@
 
 - (NSString *)imageName {
     return nil;
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    Creature *creature = [Creature new];
+    creature.reproduceCount = self.reproduceCount;
+    creature.movedThisTurn = self.movedThisTurn;
+    return creature;
 }
 
 @end

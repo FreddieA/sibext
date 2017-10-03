@@ -18,6 +18,7 @@
 
 - (NSArray *)surroundingAreaForSpace:(Space *)space;
 
-@property (readonly) NSArray *spaces;
+@property (readonly) NSArray<Space *> *spaces;
+@property (readonly) NSArray<NSIndexPath *> *updatedIndexes;
 
 @end

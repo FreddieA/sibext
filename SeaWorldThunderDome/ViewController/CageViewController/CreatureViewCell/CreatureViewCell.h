@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) Space *space;
 
++ (NSString *)tableReuseIdentifier;
+
 @end

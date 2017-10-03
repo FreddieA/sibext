@@ -28,9 +28,24 @@ const int kItemsPerRow = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [_collectionView registerNib:[UINib nibWithNibName:@"CreatureViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CreatureViewCell"];
+    [_collectionView registerNib:[UINib nibWithNibName:CreatureViewCell.tableReuseIdentifier
+                                                bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:CreatureViewCell.tableReuseIdentifier];
     [self reloadDataSource];
 }
+
+- (void)reloadDataSource {
+    _engine = [[WorldEngine alloc] initWithItemsPerRow:kItemsPerRow itemsCount:kItemsCount];
+    [_engine runCycleWithCompletion:nil];
+    [_collectionView reloadData];
+}
+
+- (void)autoPlay:(NSTimer *)timer {
+    [_engine runCycleWithCompletion:^{
+        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    }];
+}
+
+#pragma mark Actions
 
 - (IBAction)autoPlayAction:(UISwitch *)sender {
     if (sender.on) {
@@ -39,12 +54,6 @@ const int kItemsPerRow = 10;
         [_timer invalidate];
         _timer = nil;
     }
-}
-
-- (void)reloadDataSource {
-    _engine = [[WorldEngine alloc] initWithItemsPerRow:kItemsPerRow itemsCount:kItemsCount];
-    [_engine runCycleWithCompletion:nil];
-    [_collectionView reloadData];
 }
 
 - (IBAction)resetAction:(id)sender {
@@ -57,14 +66,10 @@ const int kItemsPerRow = 10;
     });
 }
 
-- (void)autoPlay:(NSTimer *)timer {
-    [_engine runCycleWithCompletion:^{
-        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-    }];
-}
+#pragma mark UICollectionView methods
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CreatureViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CreatureViewCell" forIndexPath:indexPath];
+    CreatureViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CreatureViewCell.tableReuseIdentifier forIndexPath:indexPath];
     cell.space = _engine.spaces[indexPath.item];
     return cell;
 }
@@ -80,8 +85,15 @@ const int kItemsPerRow = 10;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [_engine runCycleWithCompletion:^{
-        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        [_collectionView reloadItemsAtIndexPaths:_engine.updatedIndexes];
     }];
+}
+
+#pragma mark dealoc
+
+- (void)dealloc {
+    [_timer invalidate];
+    _timer = nil;
 }
 
 @end

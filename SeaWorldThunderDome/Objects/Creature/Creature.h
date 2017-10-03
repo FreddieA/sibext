@@ -10,16 +10,16 @@
 
 @class Space;
 
-@interface Creature : NSObject
+@interface Creature : NSObject <NSCopying>
 
 - (void)moveToSpace:(Space *)space;
-- (void)refreshAP;
+- (void)refresh;
 
 - (Space *)space;
 - (NSString *)imageName;
 
-- (BOOL)dead;
-- (BOOL)tryToReproduceInArea:(NSArray *)spaces;
+- (BOOL)isDead;
+- (BOOL)canReproduceInArea:(NSArray *)spaces;
 + (Space *)preferredSpaceFromSpaces:(NSArray *)spaces;
 
 + (int)turnsNeededToReproduce;

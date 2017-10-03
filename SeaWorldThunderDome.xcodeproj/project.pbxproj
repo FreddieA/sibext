@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40884811F8F90B70037216F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40884801F8F90B70037216F /* LaunchScreen.storyboard */; };
+		D40884861F8F975B0037216F /* NSArray+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = D40884851F8F975B0037216F /* NSArray+Random.m */; };
 		D40A22E61F7A8EC40052A576 /* NSObject+Count.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A22E51F7A8EC40052A576 /* NSObject+Count.m */; };
 		D40A22EB1F7A90960052A576 /* Orca.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A22EA1F7A90960052A576 /* Orca.m */; };
 		D40A22EE1F7A90A10052A576 /* Penguin.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A22ED1F7A90A10052A576 /* Penguin.m */; };
@@ -23,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D40884801F8F90B70037216F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D40884841F8F975B0037216F /* NSArray+Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Random.h"; sourceTree = "<group>"; };
+		D40884851F8F975B0037216F /* NSArray+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Random.m"; sourceTree = "<group>"; };
 		D40A22E41F7A8EC40052A576 /* NSObject+Count.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Count.h"; sourceTree = "<group>"; };
 		D40A22E51F7A8EC40052A576 /* NSObject+Count.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Count.m"; sourceTree = "<group>"; };
 		D40A22E91F7A90960052A576 /* Orca.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Orca.h; sourceTree = "<group>"; };
@@ -60,6 +65,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D40884821F8F97310037216F /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				D40884831F8F97380037216F /* NSArray+Random */,
+				D40A22E31F7A8E2A0052A576 /* NSObject+Count */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		D40884831F8F97380037216F /* NSArray+Random */ = {
+			isa = PBXGroup;
+			children = (
+				D40884841F8F975B0037216F /* NSArray+Random.h */,
+				D40884851F8F975B0037216F /* NSArray+Random.m */,
+			);
+			path = "NSArray+Random";
+			sourceTree = "<group>";
+		};
 		D40A22E31F7A8E2A0052A576 /* NSObject+Count */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +139,7 @@
 		D4F683DF1F79272900CF4020 /* SeaWorldThunderDome */ = {
 			isa = PBXGroup;
 			children = (
+				D40884821F8F97310037216F /* Additions */,
 				D4F683FF1F792BC800CF4020 /* Objects */,
 				D4F683F71F79276D00CF4020 /* Utils */,
 				D4F683F61F79276400CF4020 /* ViewController */,
@@ -124,6 +148,7 @@
 				D4F683E91F79272900CF4020 /* Assets.xcassets */,
 				D4F683EE1F79272900CF4020 /* Info.plist */,
 				D4F683EF1F79272900CF4020 /* main.m */,
+				D40884801F8F90B70037216F /* LaunchScreen.storyboard */,
 			);
 			path = SeaWorldThunderDome;
 			sourceTree = "<group>";
@@ -167,7 +192,6 @@
 		D4F683FF1F792BC800CF4020 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				D40A22E31F7A8E2A0052A576 /* NSObject+Count */,
 				D4F684041F792F6700CF4020 /* Creature */,
 				D4F684031F792F3200CF4020 /* Space */,
 			);
@@ -253,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F683FE1F7929A000CF4020 /* CageViewController.xib in Resources */,
+				D40884811F8F90B70037216F /* LaunchScreen.storyboard in Resources */,
 				D40A22F51F7B615B0052A576 /* CreatureViewCell.xib in Resources */,
 				D4F683EA1F79272900CF4020 /* Assets.xcassets in Resources */,
 			);
@@ -275,6 +300,7 @@
 				D4F683E21F79272900CF4020 /* AppDelegate.m in Sources */,
 				D40A22EB1F7A90960052A576 /* Orca.m in Sources */,
 				D40A22E61F7A8EC40052A576 /* NSObject+Count.m in Sources */,
+				D40884861F8F975B0037216F /* NSArray+Random.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +415,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SeaWorldThunderDome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -403,7 +428,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SeaWorldThunderDome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

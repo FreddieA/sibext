@@ -19,11 +19,19 @@
 }
 
 - (void)refresh {
-    if (_creature.dead) {
-        _creature = nil;
+    if (self.creature.isDead) {
+        self.creature = nil;
     } else {
-        [_creature refreshAP];
+        [self.creature refresh];
     }
+}
+
+- (id)copyWithZone:(nullable NSZone *)zone {
+    Space *space = [Space new];
+    space.creature = [self.creature copy];
+    space.xIndex = self.xIndex;
+    space.yIndex = self.yIndex;
+    return space;
 }
 
 @end

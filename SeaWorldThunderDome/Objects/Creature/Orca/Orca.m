@@ -9,10 +9,11 @@
 #import "Orca.h"
 #import "Space.h"
 #import "Penguin.h"
+#import "NSArray+Random.h"
 
 @interface Orca()
 
-@property (nonatomic) int deathCounter;
+@property (nonatomic) int deathCount;
 
 @end
 
@@ -24,12 +25,12 @@
 
 - (void)moveToSpace:(Space *)space {
     if ([space.creature isKindOfClass:Penguin.class]) {
-        _deathCounter = 0;
+        self.deathCount = 0;
     } else {
-        _deathCounter ++;
+        self.deathCount ++;
     }
     
-    if (!self.dead) {
+    if (!self.isDead) {
         [super moveToSpace:space];
     }
 }
@@ -38,8 +39,8 @@
     return 3;
 }
 
-- (BOOL)dead {
-    return _deathCounter >= self.turnsNeededToDie;
+- (BOOL)isDead {
+    return self.deathCount >= self.turnsNeededToDie;
 }
 
 + (Space *)preferredSpaceFromSpaces:(NSArray *)spaces {
@@ -47,9 +48,9 @@
         return [space.creature isKindOfClass:Penguin.class];
     }]];
     if (spacesWithFood.count) {
-        return [super preferredSpaceFromSpaces:spacesWithFood];
+        return spacesWithFood.randomObject;
     }
-    return [super preferredSpaceFromSpaces:[spaces filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"creature == nil"]]];
+    return [super preferredSpaceFromSpaces:spaces];
 }
 
 + (int)turnsNeededToReproduce {
